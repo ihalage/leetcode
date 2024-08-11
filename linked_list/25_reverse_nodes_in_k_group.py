@@ -50,6 +50,7 @@ class Solution:
             prev_group_tail.next = reversed_group_head
             reversed_group_tail.next = next_group_head
 
+
             # mode prev_group_tail to the tail of the current reversed group
             prev_group_tail = reversed_group_tail
 
