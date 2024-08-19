@@ -21,8 +21,29 @@ class Solution:
     When the loop terminates, we return dummy.next
     """
     def reverseKGroup(self, head: Optional[ListNode], k: int) -> Optional[ListNode]:
-        
+        """
+        Reverses the nodes in a linked list in groups of size k.
 
+        Args:
+            head (Optional[ListNode]): The head of the linked list.
+            k (int): The size of each group.
+
+        Returns:
+            Optional[ListNode]: The head of the modified linked list.
+
+        This function takes a linked list and reverses the nodes in groups of size k. It uses a helper function called `reverse_linked_list_k` to reverse each group of nodes. The function starts by initializing a dummy node and linking it to the head of the linked list. It then iterates through the linked list, finding the start and end of each group of nodes. The nodes in each group are reversed using the `reverse_linked_list_k` function. The function keeps track of the previous group tail and updates it to the end of the current reversed group. Finally, it returns the head of the modified linked list.
+
+        Note:
+            - This function assumes that the input linked list is non-empty and that k is a positive integer.
+
+        Example:
+            >>> head = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
+            >>> k = 3
+            >>> Solution().reverseKGroup(head, k)
+            ListNode(3, ListNode(2, ListNode(1, ListNode(5, ListNode(4))))))
+
+        """
+        
         def reverse_linked_list_k(node, k):
             prev, cur = None, node
             for _ in range(k):
@@ -49,7 +70,6 @@ class Solution:
             reversed_group_head, reversed_group_tail = reverse_linked_list_k(cur_group_head, k)
             prev_group_tail.next = reversed_group_head
             reversed_group_tail.next = next_group_head
-
 
             # mode prev_group_tail to the tail of the current reversed group
             prev_group_tail = reversed_group_tail
